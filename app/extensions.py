@@ -13,8 +13,12 @@ from flask import Flask
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_socketio import SocketIO
 
 from adapters.loggers.logger_adapter import app_logger
+
+# Global SocketIO instance
+socketio = SocketIO(cors_allowed_origins="*")
 
 
 def register_extensions(app: Flask) -> None:
@@ -24,6 +28,7 @@ def register_extensions(app: Flask) -> None:
     This function configures and attaches middleware to the Flask application:
       - CORS: Enables cross-origin requests with configurable origins.
       - Limiter: Adds rate limiting to protect against abuse.
+      - SocketIO: Enables WebSocket communication for real-time features.
 
     Args:
         app (Flask): The Flask application instance to register extensions with.
@@ -42,4 +47,8 @@ def register_extensions(app: Flask) -> None:
             ),
         )
         limiter.init_app(app)
+    
+    # Initialize SocketIO
+    socketio.init_app(app, async_mode='threading')
+    
     app_logger.debug("Extensions registered")

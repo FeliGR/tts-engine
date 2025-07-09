@@ -35,6 +35,7 @@ def register_routes(app: Flask) -> None:
                 "endpoints": {
                     "tts": "/api/tts",
                     "stt": "/api/stt",
+                    "stt_stream": "/api/stt/stream",
                     "health": "/health",
                 },
             }

@@ -57,6 +57,17 @@ class LoggerAdapter(ILogger):
         """
         self._logger.info(message, *args, **kwargs)
 
+    def warning(self, message: str, *args, **kwargs) -> None:
+        """
+        Log a warning-level message.
+
+        Args:
+            message (str): The log message.
+            *args: Additional positional arguments for the message formatting.
+            **kwargs: Additional keyword arguments.
+        """
+        self._logger.warning(message, *args, **kwargs)
+
     def error(self, message: str, *args, **kwargs) -> None:
         """
         Log an error-level message.

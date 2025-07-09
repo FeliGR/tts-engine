@@ -110,3 +110,31 @@ class STTConfigurationError(STTException):
             message: Error message describing the configuration issue.
         """
         super().__init__(message)
+
+
+class InvalidInputError(Exception):
+    """Exception raised when input validation fails."""
+
+    def __init__(self, message: str = "Invalid input provided") -> None:
+        """
+        Initialize the invalid input error.
+
+        Args:
+            message: Error message describing the validation failure.
+        """
+        self.message = message
+        super().__init__(self.message)
+
+
+class ExternalServiceError(Exception):
+    """Exception raised when external service calls fail."""
+
+    def __init__(self, message: str = "External service error") -> None:
+        """
+        Initialize the external service error.
+
+        Args:
+            message: Error message describing the service failure.
+        """
+        self.message = message
+        super().__init__(self.message)

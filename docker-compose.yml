@@ -15,7 +15,8 @@ services:
       - PORT=5003
       - HOST=0.0.0.0
       - CORS_ORIGINS=*
-      - API_RATE_LIMIT=100
+      - API_RATE_LIMIT=10000
+      - DEFAULT_RATE_LIMITS=["10000 per day", "100 per minute"]
       - GOOGLE_APPLICATION_CREDENTIALS=/app/tts-key.json
     healthcheck:
       test: ["CMD","curl","-f","http://localhost:5003/health"]
